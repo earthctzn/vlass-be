@@ -83,3 +83,4 @@ production:
   database: vlass_be_production
   username: vlass_be
   password: <%= ENV['VLASS_BE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
