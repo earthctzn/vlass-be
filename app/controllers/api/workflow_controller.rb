@@ -1,2 +1,0 @@
-class WorkflowController < ApplicationController
-end
