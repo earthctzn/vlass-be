@@ -1,10 +1,10 @@
 class Api::V1::SessionsController < ApplicationController
 
     def create
-        user = User.find_by(email: params[:user][:username])
+        user = User.find_by(username: params[:user][:username])
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            render json: user, only: [:id, :username], include: [:reviews], status: :ok
+            render json: user, only: [:username], status: :ok
         else
             render json: {errors: ["Unable to log in. Please try again."] }
         end
