@@ -21,7 +21,7 @@ class API::V1::WorkController < ApplicationController
         else
          work = Work.find(params[:id])
         end
-      end
+    end
 
     def show
         work = Work.first
