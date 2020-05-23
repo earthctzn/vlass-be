@@ -5,7 +5,7 @@ class API::V1::HomeController < ApplicationController
             content: home_params[:content], 
         )
         if home.save
-            render json: home, only: [:content], status: 200
+            render json: home, only: [:title, :content], status: 200
         else
             render json: {error: "Error Creating home"}
         end
@@ -13,7 +13,13 @@ class API::V1::HomeController < ApplicationController
 
     def show
         home = Home.first
-        render json: home, only: [:content], status: 200
+        render json: home, only: [:title, :content], status: 200
+    end
+
+    private
+
+    def home_params
+        params.require(:home).permit( :title, :content )
     end
     
 end
