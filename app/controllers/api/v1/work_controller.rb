@@ -1,4 +1,9 @@
-class API::V1::WorkController < ApplicationController
+class Api::V1::WorkController < ApplicationController
+
+    def index
+        work = Work.all
+        render json: work, only: [:id, :title, :company, :job], status: 200
+    end
 
     def create
         work = Work.new(work_params)
@@ -23,15 +28,15 @@ class API::V1::WorkController < ApplicationController
         end
     end
 
-    def show
-        work = Work.first
-        render json: work, only: [:id, :title, :company, :job], status: 200
+    def delete
+        work = Work.find_by(id: params[:id])
+        work.destroy
     end
 
     private
 
     def work_params
-        params.require(:work).permit( :title, :company, :job )
+        params.require(:work).permit(:id, :title, :company, :job )
     end
     
 

@@ -1,4 +1,9 @@
-class API::V1::WorkflowController < ApplicationController
+class Api::V1::WorkflowController < ApplicationController
+
+    def index
+        workflow = Workflow.all
+        render json: workflow, only: [:id, :title, :content], status: 200
+    end
     def create
         workflow = Workflow.new(workflow_params)
         if workflow.save
@@ -22,14 +27,14 @@ class API::V1::WorkflowController < ApplicationController
         end
     end
 
-    def show
-        workflow = workflow.first
-        render json: workflow, only: [:id, :title, :content], status: 200
-    end
+    # def show
+    #     workflow = workflow.first
+    #     render json: workflow, only: [:id, :title, :content], status: 200
+    # end
 
     private
 
         def workflow_params
-            params.require(:workflow).permit( :title, :content )
+            params.require(:workflow).permit(:id, :title, :content )
         end
 end
