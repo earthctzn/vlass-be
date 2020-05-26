@@ -15,6 +15,13 @@ class Api::V1::SessionsController < ApplicationController
         render json: {csrf_auth_token: auth_token}
     end
 
+    def get_user
+        user = User.find_by(id: session[:user_id])
+        if user
+            render json: user, only: [:username], status: :ok
+        end
+    end
+
 
     def destroy
         session.clear
