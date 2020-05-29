@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+home = Home.create({content: "BREAKING THE GLASS CEILING TO UNLOCK YOUR POTENTIAL"})

@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_161718) do
   end
 
   create_table "homes", force: :cascade do |t|
-    t.string "title"
     t.string "content"
   end
 
