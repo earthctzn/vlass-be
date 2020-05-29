@@ -1,7 +1,7 @@
 class Api::V1::AboutController < ApplicationController
 
     def index
-        about = About.all
+        about = About.first
         render json: about, only: [:id, :title, :content], status: 200
     end
     

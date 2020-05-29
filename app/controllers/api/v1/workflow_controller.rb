@@ -1,7 +1,7 @@
 class Api::V1::WorkflowController < ApplicationController
 
     def index
-        workflow = Workflow.all
+        workflow = Workflow.first
         render json: workflow, only: [:id, :title, :content], status: 200
     end
     def create
@@ -26,11 +26,6 @@ class Api::V1::WorkflowController < ApplicationController
          workflow = workflow.find(params[:id])
         end
     end
-
-    # def show
-    #     workflow = workflow.first
-    #     render json: workflow, only: [:id, :title, :content], status: 200
-    # end
 
     private
 

@@ -1,7 +1,7 @@
 class Api::V1::ContactController < ApplicationController
 
     def index
-        contact = Contact.all
+        contact = Contact.first
         render json: contact, only: [:id, :title, :content], status: 200
     end
     
