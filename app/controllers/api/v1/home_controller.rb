@@ -1,14 +1,12 @@
 class Api::V1::HomeController < ApplicationController
 
     def index
-        home = Home.all
-        render json: home, only: [:title, :content], status: 200
+        home = Home.first
+        render json: home, only: [:id, :title, :content], status: 200
     end
 
     def create
-        home = Home.new(
-            content: home_params[:content], 
-        )
+        home = Home.new( content: home_params[:content] )
         if home.save
             render json: home, only: [:id, :title, :content], status: 200
         else
