@@ -15,7 +15,7 @@ class Api::V1::WorkController < ApplicationController
     end
 
     def update
-        if params[:user_id] 
+        if logged_in?
           work = Work.find(params[:id])        
           if work.update(work_params)
             render json: work, only: [:id, :title, :company, :job], status: 200

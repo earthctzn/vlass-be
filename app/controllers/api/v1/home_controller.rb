@@ -15,7 +15,7 @@ class Api::V1::HomeController < ApplicationController
     end
 
     def update
-        if params[:user_id] 
+        if logged_in?
           home = Home.find(params[:id])        
           if home.update(home_params)
             render json: home, only: [:id, :title, :content], status: 200

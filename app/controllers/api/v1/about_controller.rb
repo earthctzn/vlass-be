@@ -15,8 +15,8 @@ class Api::V1::AboutController < ApplicationController
     end
 
     def update
-        if params[:user_id] 
-          about = About.find(params[:id])        
+        if logged_in? 
+          about = About.find(params[:id])  
           if about.update(about_params)
             render json: about, only: [:id, :title, :content], status: 200
           else

@@ -14,8 +14,8 @@ class Api::V1::WorkflowController < ApplicationController
     end
 
     def update
-        if params[:user_id] 
-          workflow = workflow.find(params[:id])        
+        if logged_in?
+          workflow = Workflow.find(params[:id])        
           if workflow.update(workflow_params)
             render json: workflow, only: [:id, :title, :content], status: 200
           else
@@ -23,7 +23,7 @@ class Api::V1::WorkflowController < ApplicationController
           end
     
         else
-         workflow = workflow.find(params[:id])
+         workflow = Workflow.find(params[:id])
         end
     end
 

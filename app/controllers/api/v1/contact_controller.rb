@@ -15,7 +15,7 @@ class Api::V1::ContactController < ApplicationController
     end
 
     def update
-        if params[:user_id] 
+        if logged_in?
           contact = Contact.find(params[:id])        
           if contact.update(contact_params)
             render json: contact, only: [:id, :title, :content], status: 200
