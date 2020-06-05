@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_161718) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.string "company"
-    t.string "job"
+    t.string "companyname"
+    t.string "jobdescription"
   end
 
 end

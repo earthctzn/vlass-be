@@ -2,13 +2,13 @@ class Api::V1::WorkController < ApplicationController
 
     def index
         work = Work.all
-        render json: work, only: [:id, :title, :company, :job], status: 200
+        render json: work, only: [:id, :companyname, :jobdescription], status: 200
     end
 
     def create
         work = Work.new(work_params)
         if work.save
-            render json: work, only: [:id, :title, :company, :job], status: 200
+            render json: work, only: [:id, :companyname, :jobdescription], status: 200
         else
             render json: {error: "Error Creating Work"}
         end
@@ -18,7 +18,7 @@ class Api::V1::WorkController < ApplicationController
         if logged_in?
           work = Work.find(params[:id])        
           if work.update(work_params)
-            render json: work, only: [:id, :title, :company, :job], status: 200
+            render json: work, only: [:id, :companyname, :jobdescription], status: 200
           else
             render json: {error: "Error Updating Work"}
           end
@@ -36,7 +36,7 @@ class Api::V1::WorkController < ApplicationController
     private
 
     def work_params
-        params.require(:work).permit(:id, :title, :company, :job )
+        params.require(:work).permit(:id, :companyname, :jobdescription )
     end
     
 
